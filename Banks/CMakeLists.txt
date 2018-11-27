@@ -13,12 +13,12 @@ add_library(clas12obj OBJECT
 # shared libraries need PIC
 set_property(TARGET clas12obj PROPERTY POSITION_INDEPENDENT_CODE 1)
 # shared and static libraries built from the same object files
-#add_library(clas12banks SHARED $<TARGET_OBJECTS:clas12obj>)
-add_library(clas12banks STATIC $<TARGET_OBJECTS:clas12obj>)
+#add_library(clas12tool SHARED $<TARGET_OBJECTS:clas12obj>)
+add_library(clas12tool STATIC $<TARGET_OBJECTS:clas12obj>)
 
-#target_link_libraries(clas12banks PRIVATE hipocpp)
-target_link_libraries(clas12banks PRIVATE hipocpp)
+#target_link_libraries(clas12tool PRIVATE hipocpp)
+target_link_libraries(clas12tool PRIVATE hipocpp)
 
-install(TARGETS clas12banks
+install(TARGETS clas12tool
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)

@@ -21,3 +21,5 @@ add_subdirectory(Hipo)
 
 include_directories(Banks)
 add_subdirectory(Banks)
+
+add_subdirectory(hipopy)
