@@ -1,13 +1,12 @@
-all: 
-	@cd Lz4 ; make lz4
-	@cd Hipo; make
-	@cd Banks; make
-	@cd Utils; make
+all:
+	@make lz4 -C Lz4
+	@make -j2 -C Hipo
+	@make -j2 -C Banks
+	@make -j2 -C Utils
 
 clean:
-	@cd Lz4; make clean
-	@cd Hipo; make clean
-	@cd Banks; make clean
-	@cd Utils; make clean
-	@echo "Cleaning lib directory"
+	@make clean -C Lz4
+	@make clean -C Hipo
+	@make clean -C Banks
+	@make clean -C Utils
 	@rm -rf lib/*
