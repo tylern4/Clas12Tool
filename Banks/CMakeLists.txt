@@ -19,6 +19,14 @@ add_library(clas12tool_static STATIC $<TARGET_OBJECTS:clas12obj>)
 target_link_libraries(clas12tool PUBLIC hipocpp)
 target_link_libraries(clas12tool_static PUBLIC hipocpp)
 
+set_target_properties(hipocpp PROPERTIES PUBLIC_HEADER
+  clas12event.h
+  detector.h
+  header.h
+  particle.h
+  vectors.h
+)
+
 install(TARGETS clas12tool clas12tool_static
         LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+      ARCHIVE DESTINATION lib)

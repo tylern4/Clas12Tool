@@ -24,6 +24,20 @@ set_property(TARGET hipoobj PROPERTY POSITION_INDEPENDENT_CODE 1)
 add_library(hipocpp SHARED $<TARGET_OBJECTS:hipoobj>)
 add_library(hipocpp_static STATIC $<TARGET_OBJECTS:hipoobj>)
 
+set_target_properties(hipocpp PROPERTIES PUBLIC_HEADER
+  data.h
+  bank.h
+  dictionary.h
+  event.h
+  node.h
+  reader.h
+  record.h
+  text.h
+  utils.h
+  wrapper.h
+  writer.h
+)
+
 
 IF(${LZ4_FOUND})
   target_link_libraries(hipocpp PRIVATE ${LZ4_LIBRARY})

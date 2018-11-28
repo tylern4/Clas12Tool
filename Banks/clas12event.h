@@ -45,8 +45,8 @@ private:
       "REC::Event","REC::Particle","REC::Calorimeter",
       "REC::Scintillator" };
 */
-  std::vector<std::string> banks = {"REC::Event", "REC::Particle",
-                                    "REC::Calorimeter", "REC::Scintillator"};
+  std::vector<std::string> banks;
+
   clas12::header clas12header;
   clas12::particle clas12particle;
   clas12::detector clas12calorimeter;
@@ -56,7 +56,13 @@ private:
 public:
   clas12event() {}
 
-  clas12event(hipo::reader &r) { init(r); }
+  clas12event(hipo::reader &r) {
+    banks.push_back("REC::Event");
+    banks.push_back("REC::Particle");
+    banks.push_back("REC::Calorimeter");
+    banks.push_back("REC::Scintillator");
+    init(r);
+  }
 
   ~clas12event() {}
 
@@ -72,7 +78,7 @@ public:
 
   clas12::particle &particles() { return clas12particle; }
   clas12::header &header() { return clas12header; }
-}; // namespace clas12
+};
 
 } // namespace clas12
 
