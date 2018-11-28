@@ -14,6 +14,14 @@ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${EXTRA_FLAGS}" )
 add_library(hipopy MODULE ${_hipopy})
 python_extension_module(hipopy)
 
-target_link_libraries(hipopy hipocpp clas12tool ${LZ4_LIBRARY} ${PYTHON_LIBRARIES} ${ROOT_LIBRARIES})
+
+IF(${LZ4_FOUND})
+  target_link_libraries(hipopy hipocpp clas12tool ${LZ4_LIBRARY} ${PYTHON_LIBRARIES} ${ROOT_LIBRARIES})
+ELSE()
+  target_link_libraries(hipopy hipocpp clas12tool LZ4 ${PYTHON_LIBRARIES} ${ROOT_LIBRARIES})
+ENDIF()
+
+
+
 
 install(TARGETS hipopy LIBRARY DESTINATION lib)
