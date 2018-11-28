@@ -2,7 +2,7 @@ find_package(PythonInterp)
 find_package(PythonLibs)
 find_package(PythonExtensions)
 find_package(Cython REQUIRED)
-find_package(LZ4 REQUIRED)
+
 add_definitions(-D__LZ4__)
 
 add_cython_target(hipopy hipopy.pyx CXX PY3 OUTPUT_VAR _hipopy)

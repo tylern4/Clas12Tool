@@ -13,7 +13,11 @@ set(CMAKE_CXX_FLAGS ${ROOT_CXX_FLAGS})
 set(LZ4_FOUND FALSE)
 find_package(LZ4)
 IF(NOT ${LZ4_FOUND})
-  message(FATAL_ERROR "\nlz4 not found\nAt this time use make to build the libraries")
+  add_library(LZ4 STATIC IMPORTED)
+  set_target_properties(LZ4 PROPERTIES
+    IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/Lz4/lib/liblz4.a"
+    INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/Lz4/lib"
+  )
 ENDIF()
 
 include_directories(Hipo)
@@ -23,5 +27,4 @@ include_directories(Banks)
 add_subdirectory(Banks)
 
 add_subdirectory(hipopy)
-
 add_subdirectory(Examples)
